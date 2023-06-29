@@ -4,6 +4,7 @@ import label from './label';
 
 const meta: Meta<typeof label> = {
   component: label,
+  title: "components/label",
 
 };
 
