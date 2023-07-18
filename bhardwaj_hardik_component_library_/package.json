@@ -4,12 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "precommit": "lint-staged",
+    "lint": "eslint src",
+    "prettier": "prettier --check \"**/*.{js,jsx,ts,tsx,json,html,css}\"",
+    "test": "npm run test:unit",
+    "test:unit": "jest"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint",
+      "npm run prettier",
+      "npm test"
+    ]
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -38,21 +44,7 @@
     "storybook": "^7.0.24",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npx prettier --write",
-      "npx eslint --fix",
-      "npm test"
-    ]
   }
-
-
 
 }
 
